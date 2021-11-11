@@ -93,7 +93,8 @@ class FormBuilderMapField extends StatefulWidget {
 
 class _FormBuilderMapFieldState extends State<FormBuilderMapField> {
   bool _readonly = false;
-  final GlobalKey<FormFieldState> _fieldKey = GlobalKey<FormFieldState>();
+  final GlobalKey<FormBuilderFieldState> _fieldKey =
+      GlobalKey<FormBuilderFieldState>();
   final GlobalKey _markerKey = GlobalKey();
   Completer<GoogleMapController> _controllerCompleter = Completer();
   FormBuilderState _formState;
@@ -101,8 +102,8 @@ class _FormBuilderMapFieldState extends State<FormBuilderMapField> {
   @override
   void initState() {
     _formState = FormBuilder.of(context);
-    _formState?.registerFieldKey(widget.attribute, _fieldKey);
-    _readonly = (_formState?.readOnly == true) ? true : widget.readonly;
+    _formState?.registerField(widget.attribute, _fieldKey.currentState);
+    _readonly = (_formState?.enabled == true) ? true : widget.readonly;
     super.initState();
   }
 
@@ -124,9 +125,9 @@ class _FormBuilderMapFieldState extends State<FormBuilderMapField> {
         if (widget.valueTransformer != null) {
           var transformed = widget.valueTransformer(val);
           FormBuilder.of(context)
-              ?.setAttributeValue(widget.attribute, transformed);
+              ?.setInternalFieldValue(widget.attribute, transformed);
         } else
-          _formState?.setAttributeValue(widget.attribute, val);
+          _formState?.setInternalFieldValue(widget.attribute, val);
       },
       builder: (FormFieldState<CameraPosition> field) {
         return InputDecorator(
