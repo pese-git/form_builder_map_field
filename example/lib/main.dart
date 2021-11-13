@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 child: FormBuilderMapField(
-                  attribute: 'Coordinates',
+                  name: 'Coordinates',
                   decoration: InputDecoration(labelText: 'Select Location'),
                   markerIconColor: Colors.red,
                   markerIconSize: 50,
