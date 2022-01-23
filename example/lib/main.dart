@@ -49,6 +49,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
+              Container(
+                child: FormBuilderLocationField(
+                  name: 'Location',
+                  decoration: InputDecoration(labelText: 'Select Location'),
+                  markerIconColor: Colors.red,
+                  markerIconSize: 50,
+                  markers: const {},
+                  circles: const {},
+                  polygons: const {},
+                  polylines: const {},
+                  gestureRecognizers: const {},
+                  onChanged: (val) {
+                    print(val);
+                  },
+                ),
+              ),
             ],
           ),
         ),
