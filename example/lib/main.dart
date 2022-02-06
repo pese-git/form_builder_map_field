@@ -41,7 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 child: FormBuilderMapField(
                   name: 'Coordinates',
-                  decoration: InputDecoration(labelText: 'Select Location'),
+                  decoration:
+                      InputDecoration(labelText: 'MapField: Select Location'),
                   markerIconColor: Colors.red,
                   markerIconSize: 50,
                   onChanged: (val) {
@@ -52,7 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 child: FormBuilderLocationField(
                   name: 'Location',
-                  decoration: InputDecoration(labelText: 'Select Location'),
+                  decoration: InputDecoration(
+                      labelText: 'LocationField: Select Location'),
                   markerIconColor: Colors.red,
                   markerIconSize: 50,
                   markers: const {},

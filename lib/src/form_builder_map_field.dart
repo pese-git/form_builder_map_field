@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+@Deprecated('Please use FormBuilderLocationField widget')
 class FormBuilderMapField extends StatefulWidget {
   final String name;
   final List<FormFieldValidator>? validators;
@@ -124,10 +125,17 @@ class _FormBuilderMapFieldState extends State<FormBuilderMapField> {
       onSaved: (val) {
         if (widget.valueTransformer != null) {
           var transformed = widget.valueTransformer!(val);
-          FormBuilder.of(context)
-              ?.setInternalFieldValue(widget.name, transformed);
+          FormBuilder.of(context)?.setInternalFieldValue(
+            widget.name,
+            transformed,
+            isSetState: false,
+          );
         } else
-          _formState.setInternalFieldValue(widget.name, val);
+          _formState.setInternalFieldValue(
+            widget.name,
+            val,
+            isSetState: false,
+          );
       },
       builder: (FormFieldState<CameraPosition> field) {
         return InputDecorator(
