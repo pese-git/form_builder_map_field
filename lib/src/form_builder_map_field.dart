@@ -128,11 +128,13 @@ class _FormBuilderMapFieldState extends State<FormBuilderMapField> {
           FormBuilder.of(context)?.setInternalFieldValue(
             widget.name,
             transformed,
+            isSetState: false,
           );
         } else
           _formState.setInternalFieldValue(
             widget.name,
             val,
+            isSetState: false,
           );
       },
       builder: (FormFieldState<CameraPosition> field) {
